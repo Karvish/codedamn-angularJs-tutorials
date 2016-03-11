@@ -13,11 +13,17 @@
 
 	</head>
 	<body ng-app="mainApp">
+		<div id="searchBoxes">
+			Global search: <input type="text" ng-model="globalSearch.$"><br>
+			Name search: <input type="text" ng-model="globalSearch.Name"><br>
+			Age search: <input type="text" ng-model="globalSearch.Age"><br>
+			Color search: <input type="text" ng-model="globalSearch.FavColor"><br>
+		</div>
 		<div ng-controller="people">
 			<h2>Names and age of programmers in the local area</h2>
 			<ul>
-				<li ng-repeat="person in people">
-					{{person.Name}}: {{person.Age}}
+				<li ng-repeat="person in people | filter: globalSearch">
+					Name: {{person.Name}}, Age: {{person.Age}}, Favourite color: {{person.FavColor}}
 				</li>
 			</ul>
 		</div>
