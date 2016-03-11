@@ -13,6 +13,13 @@
 
 	</head>
 	<body ng-app="mainApp">
-		<div ng-view></div>
+		<div ng-controller="people">
+			<h2>Names and age of programmers in the local area</h2>
+			<ul>
+				<li ng-repeat="person in people">
+					{{person.Name}}: {{person.Age}}
+				</li>
+			</ul>
+		</div>
 	</body>
 </html>
