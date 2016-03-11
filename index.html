@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="">
+<html lang="en" ng-app="myLanguageApp">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,13 +11,24 @@
 
 	</head>
 	<body>
-		<div ng-init="myFavLang=[{name:'PHP', extension:'.php'},
-		{name:'Javascript', extension:'.js'},
-		{name:'Ruby', extension:'.rb'},
-		{name:'C++', extension:'.cpp'}]">
-			<p ng-repeat="language in myFavLang">
-				Language: {{language.name}}<br /> extension: {{language.extension}}
-			</p>
+		<div ng-controller="languages">
+			Select your favourite language:
+			<button ng-repeat="language in languages" ng-click="setFavLanguage(language)">
+				{{language}}
+			</button>
+			<p>You have selected: {{myFavLanguage}}</p>
 		</div>
 	</body>
+	<script>
+		var application = angular.module('myLanguageApp', []);
+		application.controller('languages', ['$scope', function($scope) {
+			$scope.myFavLanguage = 'None';
+			$scope.languages = [
+				'PHP', 'Javascript', 'C++', 'Java',
+			];
+			$scope.setFavLanguage = function(language) {
+				$scope.myFavLanguage = language;
+			}
+		}]);
+	</script>
 </html>
