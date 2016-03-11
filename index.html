@@ -7,10 +7,12 @@
 		<title>AngularJS | Welcome!</title>
 
 		<script src="node_modules/angular/angular.js"></script>
+		<script src="node_modules/angular-route/angular-route.js"></script>
+		<script src="controller.js"></script>
 		<!-- <link rel="stylesheet" href="css/main.min.css" /> -->
 
 	</head>
-	<body ng-app="">
-		<div ng-include="'helloWorld.html'"></div>
+	<body ng-app="mainApp">
+		<div ng-view></div>
 	</body>
 </html>
