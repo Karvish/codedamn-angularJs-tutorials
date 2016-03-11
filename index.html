@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="myLanguageApp">
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,25 +10,7 @@
 		<!-- <link rel="stylesheet" href="css/main.min.css" /> -->
 
 	</head>
-	<body>
-		<div ng-controller="languages">
-			Select your favourite language:
-			<button ng-repeat="language in languages" ng-click="setFavLanguage(language)">
-				{{language}}
-			</button>
-			<p>You have selected: {{myFavLanguage}}</p>
-		</div>
+	<body ng-app="">
+		<div ng-include="'helloWorld.html'"></div>
 	</body>
-	<script>
-		var application = angular.module('myLanguageApp', []);
-		application.controller('languages', ['$scope', function($scope) {
-			$scope.myFavLanguage = 'None';
-			$scope.languages = [
-				'PHP', 'Javascript', 'C++', 'Java',
-			];
-			$scope.setFavLanguage = function(language) {
-				$scope.myFavLanguage = language;
-			}
-		}]);
-	</script>
 </html>
