@@ -1,61 +1,33 @@
 var app = angular.module('mainApp', []);
 
-app.controller('app', function($scope, date) {
-
-    $scope.message = date.showDate();
-
+app.service('fromService', function() {
+    this.message = "This is from service";
 });
 
-app.provider('date', function() {
-    var greet;
-    var date = new Date();
+app.factory('fromFactory', function() {
     return {
-        setGreeting: function(value) {
-            greet = value;
-        },
-        getTime: function() {
-            return date.getHours();
-        },
+        message: "This is from factory",
+    }
+});
+
+app.provider('fromProvider', function() {
+    var m1 = "This is from provider";
+    return {
         $get: function() {
             return {
-                showDate: function() {
-                    return greet + " It's " + date.getHours();
-                }
-            }
+                message: m1,
+            };
+        },
+        setAName: function(name) {
+            m1 += ' ' + name;
         }
-    }
+    };
 });
 
-app.config(function(dateProvider) {
-    var hour = dateProvider.getTime();
-    if(hour > 23 && hour <= 11) {
-        dateProvider.setGreeting("Good morning!");
-    }
-    else if (hour > 11 && hour <= 16) {
-        dateProvider.setGreeting("Good afternoon!");
-    }
-    else if (hour > 16 && hour <= 20){
-        dateProvider.setGreeting("Good evening!");
-    }
-    else {
-        dateProvider.setGreeting("Good night!");
-    }
+app.config(function(fromProviderProvider) {
+    fromProviderProvider.setAName('Guillaume');
 });
 
-// app.service('randomService', function() {
-//
-//     this.generate = function() {
-//         return Math.floor(Math.random()*10);
-//     }
-//
-// });
-//
-// app.factory('randomFactory', function() {
-//
-//     return {
-//         generate: function() {
-//             return Math.floor(Math.random()*10);
-//         },
-//     };
-//
-// });
+app.controller('app', function($scope, fromService, fromFactory, fromProvider) {
+    $scope.greetMessages = [fromService.message, fromFactory.message, fromProvider.message];
+});
