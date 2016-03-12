@@ -12,9 +12,9 @@
 		<!-- <link rel="stylesheet" href="css/main.min.css" /> -->
 
 	</head>
-	<body ng-app="mainApp">
-		<div ng-controller="app">
-			{{greetMessages}}
-		</div>
+	<body ng-app="mainApp" ng-controller="app">
+		<button ng-click="switchMsg()">Toggle Message</button>
+		<div ng-show="show === 'msg1'">This is my message 1</div>
+		<div ng-show="show === 'msg2'">This is my message 2</div>
 	</body>
 </html>
