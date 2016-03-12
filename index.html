@@ -9,14 +9,14 @@
 		<script src="node_modules/angular/angular.js"></script>
 		<script src="node_modules/angular-route/angular-route.js"></script>
 		<script src="controller.js"></script>
-		<script src="service.js"></script>
 		<!-- <link rel="stylesheet" href="css/main.min.css" /> -->
 
 	</head>
 	<body ng-app="mainApp">
 		<div ng-controller="app">
 			<button ng-click="generateRandom()">Generate Random Number</button>
-			<br>{{randomNumber}}
+			<p>Random number from service: {{serviceNum}}</p>
+			<p>Random number from factory: {{factoryNum}}</p>
 		</div>
 	</body>
 </html>
